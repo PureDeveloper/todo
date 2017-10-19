@@ -54,11 +54,8 @@ var handlers = {
     updatedTodoInput.value = '';
     view.displayTodos();
   },
-  deleteTodo: function(){
-    var todoPositionInput = document.getElementById('deleteTodo');
-    var todoPosition = todoPositionInput.value - 1;
-    todoList.deleteTodo(todoPosition);
-    todoPositionInput.value = '';
+  deleteTodo: function(position){
+    todoList.deleteTodo(position);
     view.displayTodos();
   },
   toggleCompleted: function(){
@@ -84,14 +81,50 @@ var view = {
       var todo = todoList.todos[i];
       var completed = todo.completed ? '[x]' : '[ ]';
       
-      todoLi.textContent = completed + ' ' + todo.todoText;
+      todoLi.id = i;
+      todoLi.textContent = completed + ' ' + todo.todoText + ' ';
+      todoLi.appendChild(this.createDeleteBtn());
       todoUl.appendChild(todoLi);
     }
+  },
+  createDeleteBtn: function(){
+    var deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.className = 'deleteButton';
+    return deleteBtn;
+  },
+  setUpEventListeners: function(){
+    var todoUl = document.querySelector('ul');
+    todoUl.addEventListener('click', function(evt){
+      // get the elem that was clicked on
+      var elementClicked = evt.target;
+      // check if elementClicked is a 
+      if (elementClicked.className === 'deleteButton') {
+        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+    });
   }
 };
 
+view.setUpEventListeners();
 
+//  high order functions with callback functions
+// function countToNum(){
+//   for(var i = 1; i <= 10; i++){
+//     console.log(i);
+//   }
+// }
+// function debug(func){
+//   debugger;
+//   func();
+// }
+// debug(countToNum);
 
-
-
-
+// setTimeout(function(){
+//   console.log('Wake Up!');
+// }, 5000);
+// var arr =  ['joe', 'sally', 'john', 'sam'];
+// var print = function print(name){
+//   console.log(name);
+// }
+// arr.forEach(print);
