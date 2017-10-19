@@ -4,6 +4,7 @@ var todoList = {
     if(this.todos.length === 0){
       console.log('Todos are empty!');
     } else {
+      console.log('My ToDo List:');
       for(var i = 0; i < this.todos.length; i++){
         var todo = this.todos[i];
         var completed = todo.completed ? '[x]' : '[ ]';
@@ -52,3 +53,20 @@ var todoList = {
     this.displayTodos();
   }
 };
+
+var displayTodosButton = document.querySelector('.btn-display-todo-list');
+var toggleCompletedButton = document.querySelector('.btn-toggle-completed');
+
+displayTodosButton.addEventListener('click', function(){
+  todoList.displayTodos();
+});
+toggleCompletedButton.addEventListener('click', function(){
+  todoList.toggleAllCompleted();
+});
+
+
+
+
+
+
+
