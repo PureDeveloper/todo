@@ -1,2 +1,2 @@
 # todo
-Todo List application
+Todo List Application - based on the Practical Javascript course at watchandcode.com
