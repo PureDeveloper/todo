@@ -10,13 +10,11 @@
     <div class="row">
       <div class="col-xs-12">
         <h1>ToDo List!</h1>
-        <button class="btn btn-primary" onclick="handlers.displayTodos()">Display Todos</button>
         <button class="btn btn-primary" onclick="handlers.toggleAll()">Toggle All</button>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-6">
-        
         <div class="form-group form-inline">
           <label for="addTodoTextInput" class="sr-only">Add Todo</label>
           <input id="addTodoTextInput" class="form-control" type="text" placeholder="Add Todo">
@@ -39,6 +37,10 @@
           <input id="toggleCompleted" class="form-control" type="number" placeholder="Toggle Completed">
           <button class="btn btn-primary" onclick="handlers.toggleCompleted()">Toggle Completed</button>
         </div>
+      </div>
+      <div class="col-xs-6">
+        <h2>Todo List</h2>
+        <ul></ul>
       </div>
     </div>
     
