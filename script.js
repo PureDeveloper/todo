@@ -1,20 +1,18 @@
-var todos = ['item 1', 'item 2', 'item 3', 'itme 4'];
-
-function displayTodos(){
-  console.log(todos);
-}
-
-function addTodos(todo){
-  todos.push(todo);
-  displayTodos();
-}
-
-function changeTodos(todoIdx, value){
-  todos[todoIdx] = value;
-  displayTodos();
-}
-
-function deleteTodo(todoIdx){
-  todos.splice(todoIdx, 1);
-  displayTodos();
-}
+var todosObj = {
+  todos: ['task 1', 'task 2', 'task 3'],
+  displayTodos: function(){
+    console.log(this.todos); 
+  },
+  addTodo: function(todo){
+    this.todos.push(todo);
+    this.displayTodos();
+  },
+  changeTodo: function(idx, newVal){
+    this.todos[idx] = newVal;
+    this.displayTodos();
+  },
+  deleteTodo: function(idx){
+    this.todos.splice(idx, 1);
+    this.displayTodos();
+  }
+};
