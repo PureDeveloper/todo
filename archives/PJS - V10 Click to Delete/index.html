@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>ToDo List!</h1>
+        <button class="btn btn-primary" onclick="handlers.toggleAll()">Toggle All</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group form-inline">
+          <label for="addTodoTextInput" class="sr-only">Add Todo</label>
+          <input id="addTodoTextInput" class="form-control" type="text" placeholder="Add Todo">
+          <button class="btn btn-primary btn-sm" onclick="handlers.addTodo()">Add Todo</button>
+        </div>
+        <div class="form-group form-inline">
+          <label for="todoPosition" class="sr-only">Todo Position</label>
+          <input id="todoPosition" class="form-control" type="number" placeholder="Todo to Change">
+          <label for="updatedTodo" class="sr-only">Todo Position</label>
+          <input id="updatedTodo" class="form-control" type="text" placeholder="Updated Todo">
+          <button class="btn btn-primary btn-sm" onclick="handlers.changeTodo()">Update Todo</button>
+        </div>
+        <div class="form-group form-inline">
+          <label for="toggleCompleted" class="sr-only">Toggle Completed</label>
+          <input id="toggleCompleted" class="form-control" type="number" placeholder="Toggle Completed">
+          <button class="btn btn-primary btn-sm" onclick="handlers.toggleCompleted()">Toggle Completed</button>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <h2>Todo List</h2>
+        <ul></ul>
+      </div>
+    </div>
+    
+    
+    <script src="script.js"></script>
+  </body>
+
+</html>
