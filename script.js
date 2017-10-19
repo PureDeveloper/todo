@@ -20,21 +20,13 @@ var todoList = {
   toggleAllCompleted: function(){
     var totalTodos = this.todos.length;
     var numCompleted = 0;
-    
-    for(var k = 0; k < totalTodos; k++){
-      if(this.todos[k].completed){
-        numCompleted++;
-      }
-    }
-    if (numCompleted === totalTodos) {
-      for(var i = 0; i < totalTodos; i++){
-        this.todos[i].completed = false;
-      }
-    } else {
-      for(var j = 0; j < totalTodos; j++){
-        this.todos[j].completed = true;
-      }
-    }
+
+    this.todos.forEach(function(todo){
+      if(todo.completed) numCompleted++;
+    });
+    this.todos.forEach(function(todo){
+      numCompleted === totalTodos ? todo.completed = false : todo.completed = true;
+    });
   }
 };
 
@@ -75,22 +67,22 @@ var view = {
   displayTodos: function(){
     var todoUl = document.querySelector('ul');
     todoUl.innerHTML = '';
-    
-    for(var i = 0; i < todoList.todos.length; i++){
+
+    todoList.todos.forEach(function(todo, position){
       var todoLi = document.createElement('li');
-      var todo = todoList.todos[i];
       var completed = todo.completed ? '[x]' : '[ ]';
       
-      todoLi.id = i;
+      todoLi.id = position;
       todoLi.textContent = completed + ' ' + todo.todoText + ' ';
       todoLi.appendChild(this.createDeleteBtn());
       todoUl.appendChild(todoLi);
-    }
+    }, this);
+    
   },
   createDeleteBtn: function(){
     var deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.className = 'deleteButton';
+    deleteBtn.textContent = 'X';
+    deleteBtn.classList.add('deleteButton', 'btn', 'btn-danger', 'btn-sm');
     return deleteBtn;
   },
   setUpEventListeners: function(){
@@ -99,7 +91,7 @@ var view = {
       // get the elem that was clicked on
       var elementClicked = evt.target;
       // check if elementClicked is a 
-      if (elementClicked.className === 'deleteButton') {
+      if (elementClicked.outerText === 'X') {
         handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
       }
     });
